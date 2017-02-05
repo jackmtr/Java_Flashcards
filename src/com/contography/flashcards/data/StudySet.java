@@ -24,11 +24,13 @@ public class StudySet {
 	
 	public StudySet(String name){
 		setName(name);
+		flashcard = new ArrayList<Flashcard>();
 	}
 	
 	public StudySet(String name, String description){
 		setName(name);
 		setDescription(description);
+		flashcard = new ArrayList<Flashcard>();
 	}
 
 	/**
@@ -77,4 +79,22 @@ public class StudySet {
 		this.flashcard = flashcard;
 	}
 	
+	/**
+	 * 
+	 */
+	public void addFlashcard(Flashcard fc){
+		this.flashcard.add(fc);
+	}
+	
+	/**
+	 * 
+	 */
+	public void printFlashCards(){
+		int count = flashcard.size();
+		flashcard.stream();
+		
+		for (int i=0; i < count; i++){
+			System.out.println(flashcard.get(i).printCard());
+		}
+	}
 }
