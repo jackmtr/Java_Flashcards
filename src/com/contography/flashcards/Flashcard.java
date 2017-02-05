@@ -19,5 +19,4 @@ public class Flashcard {
 		// TODO Auto-generated method stub
 
 	}
-
 }
