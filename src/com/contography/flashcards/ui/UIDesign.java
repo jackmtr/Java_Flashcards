@@ -83,9 +83,7 @@ public class UIDesign {
 				
 				if (catagories.contains(input2)){
 					
-					//String flashCardQuery = "SELECT * FROM flashcards WHERE catagory = '" + input2 + "';";
 					String flashCardQuery = "SELECT flashcards.name, flashcards.description FROM flashcards join studysets WHERE flashcards.studyset_id = studysets.studyset_id && studysets.name = '" + input2 +"';";
-					//System.out.println(flashCardQuery);
 					
 					result = driver.getData(flashCardQuery);
 					
@@ -93,42 +91,28 @@ public class UIDesign {
 						System.out.println(result.getString(1) + ": " + result.getString(2));
 					}					
 				}else{
-					//restart program
 					System.out.println("The catagory given is not in the database.");
 				}
 				
 			}else if (input1.equals("2")){
 				correctResponse = false;
 				
-				/*System.out.println("What is the word/idea?");
-				String key = scanner.nextLine();
-				
-				System.out.println("What is the definition/description?");
-				String descriptionValue = scanner.nextLine();
-				
-				System.out.println("Which StudySet should this be set to?");
-				String chosenSet = scanner.nextLine();*/
-				
 				String[] answers = newFlashcardQuestions(scanner);
-				
-				//find the studysetId from the unique catagory name
-				
+
 				String findStudysetIdQuery = "SELECT studyset_id FROM studysets WHERE name = '" + answers[2] + "';";
 				ResultSet findStudysetId = driver.getData(findStudysetIdQuery);
 				System.out.println("*************");
 				
-				int studySetValue = 1;
+				int studySetValue = 0;
 				
 				while(findStudysetId.next()){
 					studySetValue = findStudysetId.getInt(1);
 				}	
 				System.out.println("*************");
-				//check if catagory is unqieu, want it that way	
-				
+
 				String newFlashCardQuery = "INSERT INTO flashcards (name, description, studyset_id) VALUES ('" 
 						+ answers[0] + "', '" + answers[1] + "', '" + studySetValue + "');";
 
-				
 				driver.insertData(newFlashCardQuery);
 				System.out.println("Flashcard added successfully.");
 			}else{
@@ -141,15 +125,12 @@ public class UIDesign {
 		String[] answers = new String[3];
 		
 		System.out.println("What is the word/idea?");
-		//String key = scanner.nextLine();
 		answers[0] = scanner.nextLine();
 		
 		System.out.println("What is the definition/description?");
-		//String descriptionValue = scanner.nextLine();
 		answers[1] = scanner.nextLine();
 		
 		System.out.println("Which StudySet should this be set to?");
-		//String chosenSet = scanner.nextLine();
 		answers[2] = scanner.nextLine();
 		
 		return answers;

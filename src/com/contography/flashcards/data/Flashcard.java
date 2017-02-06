@@ -29,13 +29,11 @@ public class Flashcard {
 	public Flashcard(String name, String description){
 		setName(name);
 		setDescription(description);
-		//set date
 	}
 	
 	public Flashcard(String name, String description, String catagory){
 		setName(name);
 		setDescription(description);
-		//set date
 		setCatagory(catagory);
 	}	
 	
@@ -82,7 +80,6 @@ public class Flashcard {
 	 * @param dateCreated the dateCreated to set
 	 */
 	public void setDateCreated(Date dateCreated) {
-		//validate for todays date
 		this.dateCreated = dateCreated;
 	}
 

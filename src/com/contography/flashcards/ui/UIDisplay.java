@@ -22,8 +22,4 @@ public class UIDisplay {
 	public static void readMessage(){
 		System.out.println("Choose a study set to read from: ");
 	}
-	
-	/*public static void display(String message){
-		System.out.println(message);
-	}*/
 }

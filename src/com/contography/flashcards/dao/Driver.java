@@ -13,7 +13,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-//import java.sql.*;
 /**
  * @author Jackie
  *
@@ -27,16 +26,13 @@ public class Driver {
 	}
 	
 	public void connect(){
-		//String driver = "";
 		String url = "jdbc:mysql://localhost:3306/flashcards?autoReconnect=true&useSSL=false";
 		String user = "guest";
 		String password= "password";
 		
 		try{
 			_connection = DriverManager.getConnection(url, user, password);
-		}/*catch(ClassNotFoundException e){
-			e.printStackTrace();
-		}*/catch(SQLException e){
+		}catch(SQLException e){
 			e.printStackTrace();
 		}
 	}
@@ -85,11 +81,11 @@ public class Driver {
 	public int updateData(String insertQuery) throws SQLException{
 		Statement statement = _connection.createStatement();
 		return statement.executeUpdate(insertQuery);
-	} //i know this method is the same as insertData, i just felt a new method should be made.
+	}
 	
 	public int deleteData(String insertQuery) throws SQLException{
 		Statement statement = _connection.createStatement();
 		return statement.executeUpdate(insertQuery);
-	} //i know this method is the same as insertData, i just felt a new method should be made.	
+	}
 	
 }
