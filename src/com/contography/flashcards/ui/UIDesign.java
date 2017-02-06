@@ -31,7 +31,7 @@ public class UIDesign {
 		
 		if(!doesStudyExist && !doesFlashExist){
 			
-			String createStudysetTableQuery = "CREATE TABLE studysets(studyset_id int NOT NULL AUTO_INCREMENT, name varchar(255) NOT NULL, PRIMARY KEY (studyset_id));";
+			String createStudysetTableQuery = "CREATE TABLE studysets(studyset_id int NOT NULL AUTO_INCREMENT, name varchar(255) NOT NULL UNIQUE, PRIMARY KEY (studyset_id));";
 			driver.createTable(createStudysetTableQuery);
 			
 			String createFlashcardTableQuery = "CREATE TABLE flashcards(flashcard_id int NOT NULL AUTO_INCREMENT, name varchar(255) NOT NULL, description TEXT NOT NULL, studyset_id int DEFAULT 1, PRIMARY KEY (flashcard_id), FOREIGN KEY (studyset_id) REFERENCES studysets(studyset_id));";
@@ -111,11 +111,26 @@ public class UIDesign {
 				
 				String[] answers = newFlashcardQuestions(scanner);
 				
-				String newFlashCardQuery = "INSERT INTO flashcards (name, description, catagory) VALUES ('" 
-						+ answers[0] + "', '" + answers[1] + "', '" + answers[2] + "');";
+				//find the studysetId from the unique catagory name
+				
+				String findStudysetIdQuery = "SELECT studyset_id FROM studysets WHERE name = '" + answers[2] + "';";
+				ResultSet findStudysetId = driver.getData(findStudysetIdQuery);
+				System.out.println("*************");
+				
+				int studySetValue = 1;
+				
+				while(findStudysetId.next()){
+					studySetValue = findStudysetId.getInt(1);
+				}	
+				System.out.println("*************");
+				//check if catagory is unqieu, want it that way	
+				
+				String newFlashCardQuery = "INSERT INTO flashcards (name, description, studyset_id) VALUES ('" 
+						+ answers[0] + "', '" + answers[1] + "', '" + studySetValue + "');";
+
 				
 				driver.insertData(newFlashCardQuery);
-				
+				System.out.println("Flashcard added successfully.");
 			}else{
 				System.out.println("Sorry, your input was incorrect.  Please try again");
 			}
