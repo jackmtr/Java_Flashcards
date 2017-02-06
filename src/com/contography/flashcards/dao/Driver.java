@@ -41,10 +41,10 @@ public class Driver {
 		}
 	}
 	
-	/*public boolean createTable(String createQuery) throws SQLException{
+	public boolean createTable(String createQuery) throws SQLException{
 		Statement statement = _connection.createStatement();
 		return statement.execute(createQuery);
-	}*/
+	}
 	
 	public int insertData(String insertQuery) throws SQLException{
 		Statement statement = _connection.createStatement();

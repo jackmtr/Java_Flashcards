@@ -14,9 +14,8 @@ import com.contography.flashcards.dao.Driver;
 
 //import java.util.ArrayList;
 
-import com.contography.flashcards.data.*;
-//import com.contography.flashcards.ui.UIDisplay;
-import com.contography.flashcards.ui.UIDisplay;
+//import com.contography.flashcards.data.*;
+import com.contography.flashcards.ui.*;
 
 /**
  * @author Jackie
@@ -29,11 +28,11 @@ public class Main {
 	 */
 	public static void main(String[] args) throws SQLException{
 		
-		Driver driver = new Driver();
-		Scanner scanner = new Scanner(System.in);
-		boolean correctResponse = true;
+		//Driver driver = new Driver();
+		//Scanner scanner = new Scanner(System.in);
+		//boolean correctResponse = true;
 		
-		do{
+		/*do{
 			UIDisplay.welcome();
 			
 			String input1 = scanner.nextLine();
@@ -41,8 +40,7 @@ public class Main {
 			if (input1.equals("1")){
 				correctResponse = false;
 				
-				System.out.println("read");
-				System.out.println("Choose a study set to read from: ");
+				UIDisplay.readMessage();
 				
 				ResultSet result = driver.getData("SELECT name FROM studysets");
 				while (result.next()){
@@ -82,7 +80,21 @@ public class Main {
 			}else{
 				System.out.println("Sorry, your input was incorrect.  Please try again");
 			}
-		}while(correctResponse);
+		}while(correctResponse);*/
+		
+		UIDesign.checkForDatabase();
+		
+		UIDesign.start();
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		/*Flashcard fc1 = new Flashcard("Interface", "Built like a class, but only contains methods signatures and fields.");
