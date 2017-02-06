@@ -27,7 +27,7 @@ public class Driver {
 	}
 	
 	public void connect(){
-		String driver = "";
+		//String driver = "";
 		String url = "jdbc:mysql://localhost:3306/flashcards?autoReconnect=true&useSSL=false";
 		String user = "guest";
 		String password= "password";

@@ -12,6 +12,13 @@ package com.contography.flashcards.ui;
  */
 public class UIDisplay {
 
+	public static void welcome(){
+		System.out.println("Welcome to your flash cards");
+		System.out.println("What would you like to do?");
+		System.out.println("1: Read flash cards, 2: Make flash cards");
+		System.out.println("Your input: ");
+	}
+	
 	public static void display(String message){
 		System.out.println(message);
 	}
